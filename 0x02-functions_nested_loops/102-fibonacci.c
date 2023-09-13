@@ -9,24 +9,20 @@
  */
 void generateFibonacci(int n)
 {
-	int fib[n];
-	int i;
+	int first = 1, second = 2, next, i;
 
-	fib[0] = 1;
-	fib[1] = 2;
-
-	for (i = 2; i < n; i++)
+	for (i = 1; i <= n; i++)
 	{
-		fib[i] = fib[i - 1] + fib[i - 2];
-	}
+		printf("%d", first);
 
-	for (i = 0; i < n; i++)
-	{
-		printf("%d", fib[i]);
-		if (i != n - 1)
+		if (i != n)
 		{
 			printf(", ");
 		}
+
+		next = first + second;
+		first = second;
+		second = next;
 	}
 	printf("\n");
 }
