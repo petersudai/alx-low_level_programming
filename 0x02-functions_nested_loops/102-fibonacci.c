@@ -9,7 +9,7 @@
  */
 void generateFibonacci(int n)
 {
-	long long int fib[n];
+	int fib[n];
 	int i;
 
 	fib[0] = 1;
@@ -22,7 +22,7 @@ void generateFibonacci(int n)
 
 	for (i = 0; i < n; i++)
 	{
-		printf("%lld", fib[i]);
+		printf("%d", fib[i]);
 		if (i != n - 1)
 		{
 			printf(", ");
