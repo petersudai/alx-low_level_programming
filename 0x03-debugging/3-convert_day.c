@@ -7,12 +7,12 @@
 * @day: day of month
 * Return: day of year
 */
-int convert_day(int month, int day, int leap)
+int convert_day(int month, int day)
 {
 	switch (month)
 	{
 		case 2:
-			day = (leap) ? 31 + day : 60 + day;
+			day = 31 + day;
 			break;
 		case 3:
 			day = 60 + day;
