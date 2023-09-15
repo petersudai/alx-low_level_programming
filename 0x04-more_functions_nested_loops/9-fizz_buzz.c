@@ -2,7 +2,7 @@
 
 /**
  * main - entry point to the FizzBuzz program
- i*
+ *
  * Return: 0
  */
 int main(void)
