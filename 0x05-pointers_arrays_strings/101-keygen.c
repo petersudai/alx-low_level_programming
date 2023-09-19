@@ -8,7 +8,7 @@
  * Return: 0 always
  */
 
-#define PASSWORD_LENGTH 6
+#define PASSWORD_LENGTH 9
 
 void generatePassword(char *password) {
 	const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
