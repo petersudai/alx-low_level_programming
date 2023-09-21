@@ -1,35 +1,40 @@
 #include "main.h"
 
 /**
- * cap_string - Capitalizes all words of a string.
- * @str: The input string.
+ * cap_string -  capitalizes all words of a string.
+ * @str: string to be capitalized
  *
- * Return: Pointer to the modified string.
+ * Return: str
  */
+
 char *cap_string(char *str)
 {
 	int capitalize = 1;
+	char *ptr = str;
 
-	while (*str != '\0')
+	while (*ptr != '\0')
 	{
-		if (*str == ' ' || *str == '\t' || *str == '\n' || *str == ','
-				|| *str == ';' || *str == '.' || *str == '!' || *str == '?'
-				|| *str == '"' || *str == '(' || *str == ')' || *str == '{' || *str == '}')
+		if (*ptr == ' ' || *ptr == '\t' || *ptr == '\n' || *ptr == ',' ||
+		*ptr == ';' || *ptr == '.' || *ptr == '!' || *ptr == '?' ||
+		*ptr == '"' || *ptr == '(' || *ptr == ')' || *ptr == '{' ||
+		*ptr == '}')
 		{
 			capitalize = 1;
 		}
-		else if (capitalize && ((*str >= 'a' && *str <= 'z')))
+		else if (capitalize && ((*ptr >= 'a' && *ptr <= 'z')))
 		{
-			*str = *str - 32;
+			*ptr = *ptr - 32;
 			capitalize = 0;
 		}
-		else if (!capitalize && ((*str >= 'A' && *str <= 'Z')))
+		else if (!capitalize && ((*ptr >= 'A' && *ptr <= 'Z')))
 		{
-			*str = *str + 32;
+			*ptr = *ptr + 32;
 		}
 		else
+		{
 			capitalize = 0;
-		str++;
+		}
+		ptr++;
 	}
 	return (str);
 }
