@@ -17,4 +17,5 @@ void print_buffer(char *b, int size);
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#endif
+
+#endif  /* MAIN_H */
