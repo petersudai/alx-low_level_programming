@@ -27,4 +27,3 @@ void free_dog(dog_t *d);
 #include <string.h>
 
 #endif /* DOG_H */
-
