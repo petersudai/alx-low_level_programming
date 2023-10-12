@@ -6,7 +6,6 @@
  *
  * Return: void
  */
-
 void print_all(const char * const format, ...)
 {
 	va_list args;
@@ -22,16 +21,13 @@ void print_all(const char * const format, ...)
 		switch (*ptr)
 		{
 			case 'c':
-				i = va_arg(args, int);
-				printf("%c", i);
+				i = va_arg(args, int), printf("%c", i);
 				break;
 			case 'i':
-				i = va_arg(args, int);
-				printf("%d", i);
+				i = va_arg(args, int), printf("%d", i);
 				break;
 			case 'f':
-				f = va_arg(args, double);
-				printf("%f", f);
+				f = va_arg(args, double), printf("%f", f);
 				break;
 			case 's':
 				str = va_arg(args, char *);
@@ -45,7 +41,11 @@ void print_all(const char * const format, ...)
 		}
 		if (*(ptr + 1) && (*ptr == 'c' || *ptr == 'i' ||
 				*ptr == 'f' || *ptr == 's'))
-			printf(", ");
+		{
+			char *sep = ", ";
+
+			printf("%s", sep);
+		}
 		ptr++;
 	}
 	va_end(args), printf("\n");
