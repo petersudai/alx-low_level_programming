@@ -46,9 +46,7 @@ void print_all(const char * const format, ...)
 		if (*(ptr + 1) && (*ptr == 'c' || *ptr == 'i' ||
 				*ptr == 'f' || *ptr == 's'))
 			printf(", ");
-
 		ptr++;
 	}
-	printf("\n");
-	va_end(args);
+	va_end(args), printf("\n");
 }
