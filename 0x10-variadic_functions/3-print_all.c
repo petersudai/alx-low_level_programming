@@ -16,7 +16,7 @@ void print_all(const char * const format, ...)
 	const char *ptr = format;
 	char *str;
 	float f;
-	int i;
+	unsigned int i = 0;
 	int first_arg = 1;
 
 	va_start(args, format);
