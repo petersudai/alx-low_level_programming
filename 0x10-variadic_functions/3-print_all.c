@@ -32,14 +32,10 @@ void print_all(const char * const format, ...)
 				n = va_arg(args, int), printf("%d", n);
 				break;
 			case 'f':
-				f = va_arg(args, double), printf("%f", f);
+				f = (float) va_arg(args, double), printf("%f", f);
 				break;
 			case 's':
-				s = va_arg(args, char *);
-				if (s)
-					printf("%s", s);
-				else
-					printf("(nil)");
+				s = va_arg(args, char *), printf("%s", s != NULL ? s : "(nil)");
 				break;
 			default:
 				i++;
