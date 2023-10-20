@@ -11,10 +11,10 @@ push rbp
 mov rbp, rsp
 
 lea rdi, [hello]
-xor eax eax
+xor eax, eax
 call printf
 
 mov rsp, rbp
 pop rbp
-xor eax eax
+xor eax, eax
 ret
