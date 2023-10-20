@@ -1,9 +1,9 @@
 section .data
-format db 'Hello, Holberton',10,0
-fmt db "%s", 10, 0
+hello: db "Hello, Holberton", 10, 0
 
 section .text
 global main
+
 extern printf
 
 main:
