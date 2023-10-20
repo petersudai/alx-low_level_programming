@@ -7,9 +7,11 @@ global main
 extern printf
 
 main:
-move rdi, fmt
-mov rdi, format
-xor rax, rax
+push rbp
+mov rbp, rsp
+
+lea rdi, [hello]
+xor eax eax
 call printf
 
 ; Exit program
