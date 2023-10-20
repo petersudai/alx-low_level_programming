@@ -14,10 +14,7 @@ lea rdi, [hello]
 xor eax eax
 call printf
 
-; Exit program
-mov eax, 60 ; syscall number for exit
-xor edi, edi ; exit code 0
-syscall
-
-section .bss
-format resb 256
+mov rsp, rbp
+pop rbp
+xor eax eax
+ret
