@@ -16,7 +16,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 
 	ht->size = size;
 	ht->array = malloc(sizeof(shash_node_t *) * size);
-	
+
 	if (ht->array == NULL)
 	{
 		free(ht);
@@ -41,7 +41,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	shash_node_t *new_node, *current_node, *prev_node;
+	shash_node_t *new_node, *current_node;
 
 	if (ht == NULL || key || NULL || *key == '\0' || value == NULL)
 		return (0);
@@ -49,13 +49,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	index = key_index((unsigned char *)key, ht->size);
 
 	current_node = ht->array[index];
-	prev_node = NULL;
-
-	while (current_node != NULL && strcmp(current_node->key, key) < 0)
-	{
-		prev_node = current_node;
-		current_node = current_node->snext;
-	}
 
 	new_node = malloc(sizeof(shash_node_t));
 	if (new_node == NULL)
@@ -63,29 +56,40 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 	new_node->key = strdup(key);
 	new_node->value = strdup(value);
-	new_node->next = current_node;
+	new_node->next = NULL;
 
-	if (prev_node == NULL)
+	while (current_node != NULL && strcmp(current_node->key, key) < 0)
 	{
-		ht->array[index] = new_node;
-		new_node->sprev = NULL;
-	}
-	else
-	{
-		prev_node->snext = new_node;
-		new_node->sprev = prev_node;
+		current_node = current_node->snext;
 	}
 
 	if (current_node == NULL)
 	{
+		new_node->sprev = ht->stail;
 		new_node->snext = NULL;
+
+		if (ht->stail != NULL)
+			ht->stail->snext = new_node;
 		ht->stail = new_node;
+
+		if (ht->shead == NULL)
+			ht->shead = new_node;
 	}
 	else
 	{
+		new_node->sprev = current_node->sprev;
 		new_node->snext = current_node;
-		current_node->sprev = new_node;
+
+		if (current_node->sprev != NULL)
+			current_node->sprev->snext = new_node;
+		current_node->snext = new_node;
+
+		if (new_node->sprev == NULL)
+			ht->shead = new_node;
 	}
+
+	ht->array[index] = new_node;
+
 	return (1);
 }
 
