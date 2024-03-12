@@ -11,7 +11,7 @@ all:  $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Compiling..."
-	@$(CC) $OBJ) -o $@
+	@$(CC) $(OBJ) -o $@
 	@echo "Done."
 
 %.o: %.c
