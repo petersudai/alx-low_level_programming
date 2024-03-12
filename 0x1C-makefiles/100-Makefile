@@ -9,10 +9,6 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 all: m.h $(OBJ)
 	@$(CC) $(OBJ) -o $(NAME)
 
-%.o: %.c m.h
-	@echo "Compiling $<..."
-	@$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
 	@echo "Cleaning Emacs and Vim temporaaary files..."
 	@$(RM) *~ $(NAME)
