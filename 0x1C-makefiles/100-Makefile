@@ -3,11 +3,10 @@ SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
 NAME = school
 CFLAGS = -Wall -Werror -Wextra -pedantic
-RM = /bin/rm -f
 
-all: $(NAME)
-	$(NAME): $(OBJ)
-	@echo "Linking $(NAME)..."
+.PHONY: all clean oclean fclean re
+
+all: m.h $(OBJ)
 	@$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.c m.h
@@ -16,17 +15,12 @@ all: $(NAME)
 
 clean:
 	@echo "Cleaning Emacs and Vim temporaaary files..."
-	@$(RM) *~ \#*\# $(NAME)
+	@$(RM) *~ $(NAME)
 
 oclean:
 	@echo "Deleting object files..."
 	@$(RM) $(OBJ)
 
 fclean: clean oclean
-	@echo "Deleting executable and object files..."
-	@$(RM) $(NAME)
-
 
 re: fclean all
-
-.PHONY: all clean oclean fclean re
