@@ -1,0 +1,31 @@
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
+NAME = school
+RM = rm -f
+
+.PHONY: all clean oclean fclean re
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@echo "Compiling..."
+	@$(CC) $(OBJ) -o $@
+	@echo "Done."
+
+%.o: %.c
+	$(CC) -c $< -o $@
+
+clean:
+	@echo "Cleaning temporary files..."
+	@$(RM) *~ $(NAME)
+
+oclean:
+	@echo "Cleaning object files..."
+	@$(RM) $(OBJ)
+
+fclean: clean oclean
+	@echo "Cleaning all..."
+	@$(RM) $(NAME)
+
+re: fclean all
