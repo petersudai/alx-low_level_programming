@@ -7,7 +7,7 @@
  * @value: value to search for
  *
  * Return: The first index where value is located
- * 	   or -1 if value isn't present in array or if array is NULL
+ * or -1 if value isn't present in array or if array is NULL
  */
 
 int interpolation_search(int *array, size_t size, int value)
