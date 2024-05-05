@@ -3,6 +3,7 @@
 #include <elf.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include "main.h"
 
 /**
  * error_message - Prints error message to standard error
